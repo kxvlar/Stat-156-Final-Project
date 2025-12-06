@@ -1,0 +1,6 @@
+# .Rprofile for renv
+# This file is automatically managed by renv
+# Do not edit manually unless you know what you're doing
+
+source("renv/activate.R")
+
