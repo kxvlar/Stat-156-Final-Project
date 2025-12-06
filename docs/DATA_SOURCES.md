@@ -72,13 +72,13 @@ data/raw/
 ## Notes
 
 - The exact file names may vary in the replication package
-- Some data may be in Stata format (.dta) requiring conversion to CSV/Python format
+- Some data may be in Stata format (.dta) - use R package `haven` to read directly
 - The replication package may include pre-cleaned datasets or raw data requiring extensive cleaning
 - Check the documentation files in the replication package for exact variable names and structure
 
 ## Data Cleaning Steps
 
-See `scripts/01_clean_data.py` for the data cleaning pipeline:
+Analysis scripts will be created in `scripts/R/`. The data cleaning pipeline should:
 
 1. Load raw data files
 2. Merge air quality and policy data

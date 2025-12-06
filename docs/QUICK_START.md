@@ -7,39 +7,42 @@
 3. Download the replication package (zip file)
 4. Extract all files to `data/raw/` directory
 
-## Step 2: Install Dependencies
+## Step 2: Set Up R Environment
 
-```bash
-# Python
-pip install -r requirements.txt
-
-# Or if using R
-Rscript -e "install.packages(c('tidyverse', 'fixest', 'modelsummary', 'MatchIt'))"
+```r
+# In R or RStudio
+source("scripts/R/setup/install_essential_packages.R")
 ```
 
-## Step 3: Update Data Cleaning Script
+Or verify existing setup:
+```r
+source("tests/environment/check_environment.R")
+```
 
-1. Open `scripts/01_clean_data.py`
+## Step 3: Create Analysis Scripts
+
+1. Create analysis scripts in `scripts/R/` or `scripts/`
 2. Update file names based on what you downloaded
-3. Adjust merge keys and variable names as needed
+3. Adjust variable names and merge keys as needed
 
 ## Step 4: Run Analysis
 
-```bash
+```r
+# In R or RStudio
 # Clean the data
-python scripts/01_clean_data.py
+source("scripts/R/01_clean_data.R")
 
 # Generate summary statistics
-python scripts/02_summary_stats.py
+source("scripts/R/02_summary_stats.R")
 
 # Run main DiD analysis
-python scripts/03_main_results.py
+source("scripts/R/03_main_results.R")
 
 # Robustness checks
-python scripts/04_robustness.py
+source("scripts/R/04_robustness.R")
 
 # IPW re-analysis
-python scripts/05_ipw_analysis.py
+source("scripts/R/05_ipw_analysis.R")
 ```
 
 ## Expected Data Files
@@ -56,7 +59,7 @@ After downloading from openICPSR, you should have files like:
 - **Solution**: Make sure files are extracted to `data/raw/` directory
 
 **Problem**: File format issues (.dta files)
-- **Solution**: Install `pyreadstat` or convert to CSV using Stata/R
+- **Solution**: Use R package `haven` to read Stata files, or convert to CSV using Stata/R
 
 **Problem**: Variable names don't match
 - **Solution**: Check the replication package documentation or examine the .do files for variable names

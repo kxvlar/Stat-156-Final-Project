@@ -5,13 +5,13 @@
 To check if your R environment is active and working, run:
 
 ```bash
-Rscript check_environment.R
+Rscript tests/environment/check_environment.R
 ```
 
 Or in R/RStudio:
 
 ```r
-source("check_environment.R")
+source("tests/environment/check_environment.R")
 ```
 
 ## Starting R with the Environment
@@ -20,7 +20,7 @@ source("check_environment.R")
 1. Open RStudio
 2. Open this project (File → Open Project, or double-click the `.Rproj` file if it exists)
 3. The environment will automatically activate via `.Rprofile`
-4. Run `source("check_environment.R")` to verify
+4. Run `source("tests/environment/check_environment.R")` to verify
 
 ### Option 2: R from Terminal
 1. Navigate to the project directory:
@@ -34,7 +34,7 @@ source("check_environment.R")
 3. The `.Rprofile` should automatically activate renv
 4. Check status:
    ```r
-   source("check_environment.R")
+   source("tests/environment/check_environment.R")
    ```
 
 ### Option 3: RScript (for scripts)
@@ -79,14 +79,14 @@ Based on the last check:
 ## Quick Commands
 
 ```r
-# Check environment status
-source("check_environment.R")
+# Check environment status (recommended)
+source("tests/environment/check_environment.R")
 
 # Test installed packages
-source("test_installed_packages.R")
+source("tests/environment/test_installed_packages.R")
 
-# Run demo
-source("demo_causal_inference.R")
+# Run demo with working examples
+source("tests/environment/demo_causal_inference.R")
 
 # Install more packages (if needed)
 source("install_essential_packages.R")

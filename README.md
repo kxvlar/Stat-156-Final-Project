@@ -22,16 +22,16 @@ Stat-156-Final-Project/
 │   ├── raw/              # Original, uncleaned data (not in git)
 │   └── processed/        # Cleaned analysis datasets
 ├── scripts/
-│   ├── download_data.py  # Instructions for downloading data
-│   ├── 01_clean_data.py  # Data cleaning script
-│   ├── 02_summary_stats.py  # Summary statistics replication
-│   ├── 03_main_results.py   # Main DiD analysis
-│   ├── 04_robustness.py     # Robustness checks
-│   └── 05_ipw_analysis.py   # IPW re-analysis
+│   └── R/
+│       └── setup/        # R environment setup scripts
 ├── results/
 │   ├── figures/          # Generated figures
 │   └── tables/           # Generated tables
+├── tests/
+│   └── environment/     # R environment test scripts
 ├── docs/                 # Additional documentation
+│   └── R/               # R-specific documentation
+├── renv/                 # R environment (renv)
 ├── AuffhammerKellogg_AER_wApp.pdf  # Original paper
 ├── STAT 156_ Project Structure.pdf  # Project requirements
 └── README.md             # This file
@@ -53,54 +53,63 @@ The study uses:
 
 ## Setup Instructions
 
-### 1. Download the Data
+### 1. Set Up R Environment
 
-Run the download script to get instructions:
+This project uses R for analysis. The R environment is configured with all necessary packages for causal inference methods.
 
-```bash
-python scripts/download_data.py
-# or
-bash scripts/download_data.sh
+**Quick Setup:**
+```r
+# In R or RStudio
+source("scripts/R/setup/install_essential_packages.R")
 ```
 
-Then manually download the data from openICPSR and extract to `data/raw/`.
-
-### 2. Install Dependencies
-
-For Python analysis:
-```bash
-pip install -r requirements.txt
+**Full Setup with renv (Recommended):**
+```r
+source("scripts/R/setup/setup_renv.R")
 ```
 
-For R analysis:
-```bash
-Rscript -e "install.packages(c('tidyverse', 'fixest', 'modelsummary', 'MatchIt'))"
+**Verify Environment:**
+```r
+source("tests/environment/check_environment.R")
 ```
+
+See `docs/R/HOW_TO_START.md` for detailed instructions.
+
+### 2. Download the Data
+
+The replication data is available from:
+- **openICPSR**: https://www.openicpsr.org/openicpsr/project/112465
+
+1. Visit the URL above
+2. Download the replication package (usually a zip file)
+3. Extract all files to `data/raw/`
+
+See `docs/DATA_SOURCES.md` for more information.
 
 ### 3. Run the Analysis
 
-The analysis follows the project structure:
+The analysis follows the project structure. Analysis scripts will be created in `scripts/R/` or `scripts/`:
 
-1. **Data Cleaning** (`scripts/01_clean_data.py`):
+1. **Data Cleaning** (to be created):
    - Merge air quality and policy data
    - Aggregate to county-month or monitor-season level
    - Create treatment variables (Federal RFG, CARB RFG indicators)
    - Filter to 1989-2003 period
 
-2. **Summary Statistics** (`scripts/02_summary_stats.py`):
+2. **Summary Statistics** (to be created):
    - Replicate summary statistics table
    - Mean, median, IQR for ozone, treatment indicators, covariates
 
-3. **Main Results** (`scripts/03_main_results.py`):
-   - Replicate DiD regression
+3. **Main Results** (to be created):
+   - Replicate DiD regression using `fixest` or `plm`
    - Interpret treatment effects
    - Discuss identification assumptions
 
-4. **Robustness Checks** (`scripts/04_robustness.py`):
+4. **Robustness Checks** (to be created):
    - Pre-treatment trends test (falsification)
    - Other robustness checks
 
-5. **Re-analysis with IPW** (`scripts/05_ipw_analysis.py`):
+5. **Re-analysis with IPW** (to be created):
    - Inverse Probability Weighting estimator
    - Compare with DiD results
 
@@ -134,13 +143,30 @@ This replication follows the structure outlined in `STAT 156_ Project Structure.
 ## Empirical Methods
 
 - **Difference-in-Differences (DiD)**: Exploits spatial and temporal variation in regulation adoption
+  - Implementation: `fixest::feols()` or `plm::plm()` for panel data
 - **Regression Discontinuity (RD)**: Used for California analysis
+  - Implementation: `rdrobust::rdrobust()` for RD estimation
 - **Inverse Probability Weighting (IPW)**: Re-analysis method
+  - Implementation: `WeightIt` or manual IPW estimation
 
 ### Identification Assumptions
 
 - **Parallel Trends Assumption (DiD)**: In the absence of treatment, treatment and control groups would follow the same trends
 - **Ignorability Assumption (IPW)**: Treatment assignment is independent of potential outcomes conditional on observed covariates
+
+## R Environment
+
+This project uses R with the following key packages:
+
+- **`fixest`** - Fast fixed effects estimation (for DiD)
+- **`estimatr`** - Robust estimation with clustered standard errors
+- **`AER`** - Applied Econometrics (includes `ivreg()` for IV)
+- **`rdrobust`** - Regression Discontinuity analysis
+- **`sandwich`** - Robust standard errors
+- **`tidyverse`** - Data manipulation and visualization
+- **`plm`**, **`lfe`** - Panel data methods
+
+See `docs/R/` for complete documentation on the R environment setup.
 
 ## Results
 
@@ -158,8 +184,17 @@ Auffhammer, Maximilian, and Ryan Kellogg. "Clearing the Air? The Effects of Gaso
 
 This replication is for educational purposes. Please refer to the original paper and data sources for licensing information.
 
+## Documentation
+
+- **`docs/R/`** - R environment documentation and setup guides
+- **`docs/DATA_SOURCES.md`** - Information about data sources
+- **`docs/QUICK_START.md`** - Quick start guide
+- **`scripts/R/setup/`** - R environment setup scripts
+- **`tests/environment/`** - Environment testing scripts
+
 ## Notes
 
 - The data cleaning process may not exactly match the authors' approach, which is acceptable per project guidelines
 - Some data files may be large and are excluded from git (see `.gitignore`)
 - Results can be regenerated by running the scripts in order
+- The R environment uses `renv` for package management and reproducibility

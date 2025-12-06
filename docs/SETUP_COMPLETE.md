@@ -16,18 +16,14 @@ Stat-156-Final-Project/
 │   └── tables/          # Generated tables
 ├── docs/                # Documentation
 ├── .gitignore           # Git ignore rules
-├── requirements.txt     # Python dependencies
+├── renv/                # R environment (renv)
 └── README.md            # Main project documentation
 ```
 
 ### Scripts Created
 
-1. **`scripts/download_data.py`** - Instructions for downloading data from openICPSR
-2. **`scripts/01_clean_data.py`** - Data cleaning pipeline (template)
-3. **`scripts/02_summary_stats.py`** - Summary statistics replication
-4. **`scripts/03_main_results.py`** - Main DiD analysis
-5. **`scripts/04_robustness.py`** - Robustness checks (pre-treatment trends)
-6. **`scripts/05_ipw_analysis.py`** - IPW re-analysis
+1. **`scripts/R/setup/`** - R environment setup scripts
+2. Analysis scripts will be created in `scripts/R/` or `scripts/`
 
 ### Documentation Created
 
@@ -44,28 +40,40 @@ Visit: **https://www.openicpsr.org/openicpsr/project/112465**
 
 Download the replication package and extract to `data/raw/`
 
-### 2. Install Dependencies
+### 2. Set Up R Environment
 
-```bash
-pip install -r requirements.txt
+```r
+# In R or RStudio
+source("scripts/R/setup/install_essential_packages.R")
+```
+
+Or for full setup with renv:
+```r
+source("scripts/R/setup/setup_renv.R")
+```
+
+Verify the environment:
+```r
+source("tests/environment/check_environment.R")
 ```
 
 ### 3. Update Scripts
 
 Once you have the data:
-- Open `scripts/01_clean_data.py`
+- Create analysis scripts in `scripts/R/` or `scripts/`
 - Update file names to match what you downloaded
 - Adjust variable names and merge keys as needed
 
 ### 4. Run the Analysis
 
-Execute scripts in order:
-```bash
-python scripts/01_clean_data.py
-python scripts/02_summary_stats.py
-python scripts/03_main_results.py
-python scripts/04_robustness.py
-python scripts/05_ipw_analysis.py
+Analysis scripts will be created in R. Example structure:
+```r
+# In R or RStudio
+source("scripts/R/01_clean_data.R")
+source("scripts/R/02_summary_stats.R")
+source("scripts/R/03_main_results.R")
+source("scripts/R/04_robustness.R")
+source("scripts/R/05_ipw_analysis.R")
 ```
 
 ## Data Location
@@ -82,9 +90,9 @@ The package typically includes:
 
 ✅ Repository structure set up
 ✅ Data download instructions provided
-✅ Scripts for all analysis steps created
+✅ R environment setup scripts created
 ✅ Documentation and README created
-✅ Requirements file for dependencies
+✅ R environment configured with causal inference packages
 
 ## Notes
 
