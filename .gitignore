@@ -1,0 +1,63 @@
+# Data files (large files should not be committed)
+data/raw/*
+!data/raw/.gitkeep
+data/processed/*
+!data/processed/.gitkeep
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+.venv
+
+# R
+.Rhistory
+.RData
+.Ruserdata
+*.Rproj.user
+
+# renv (but keep renv.lock for reproducibility)
+renv/library/
+renv/python/
+renv/staging/
+renv/local/
+renv/sandbox/
+renv/activate.R
+renv/.gitignore
+# Keep renv.lock for reproducibility
+!renv.lock
+
+# Jupyter Notebooks
+.ipynb_checkpoints
+*.ipynb
+
+# Stata
+*.log
+*.smcl
+
+# Results (can be regenerated)
+results/figures/*
+!results/figures/.gitkeep
+results/tables/*
+!results/tables/.gitkeep
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Temporary files
+*.tmp
+*.temp
+~*
+
