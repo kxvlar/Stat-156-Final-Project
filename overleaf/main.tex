@@ -1,0 +1,170 @@
+\documentclass[]{spie}  %>>> use for US letter paper
+%\documentclass[a4paper]{spie}  %>>> use this instead for A4 paper
+%\documentclass[nocompress]{spie}  %>>> to avoid compression of citations
+
+\renewcommand{\baselinestretch}{1.65} % Change to 1.65 for double spacing
+ 
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{graphicx}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+
+\title{Stat 156 Final Project}
+
+\author[a]{Keval Amin}
+\author[b]{Stephanie Quiroz}
+\affil[a]{University of California, Berkeley and Sciences Po Paris}
+\affil[b]{University of California, Berkeley}
+
+\authorinfo{Further author information: (Send correspondence to A.A.A.)\\A.A.A.: E-mail: aaa@tbk2.edu, Telephone: 1 505 123 1234\\  B.B.A.: E-mail: bba@cmp.com, Telephone: +33 (0)1 98 76 54 32}
+
+% Option to view page numbers
+\pagestyle{plain} % change to \pagestyle{plain} for page numbers   
+\setcounter{page}{1} % Set start page numbering at e.g. 301
+ 
+\begin{document} 
+\maketitle
+
+\begin{abstract}
+The goal of this assignment is to apply learned methods from this course to analyze real- world datasets and
+critically appraise causal claims made in academic publications. This project is a group assignment with
+each group consisting of no more than two students.
+It is strongly recommended that students replicate and re-analyze the results of an academic
+paper whose original datasets or similar datasets are publicly available. Datasets provided by
+authors on the publication website are cleaned already and should match the authors published results
+exactly, so please do not use the cleaned datasets on the publication website unless the paper
+is an experimental study. As a part of the replication exercise, you and your group should download
+the original dataset and clean it to approximately match the sample selection used in the published paper.
+For other forms of final project assignments, such as a literature review with simulation studies to compare
+multiple methods, please attend the GSI’s office hour  
+\end{abstract}
+
+% Include a list of keywords after the abstract 
+\keywords{}
+
+\section{INTRODUCTION}
+\label{sec:intro}  % \label{} allows reference to this section
+
+This paper is a replication and critical re-analysis of the seminal work, "Clearing the Air? The Effects of Gasoline Content Regulation on Air Quality" by Maximilian Auffhammer and Ryan Kellogg (2011). The original study provided the first comprehensive empirical estimates of the regulations' benefits, exploiting the spatial and temporal variation in the standards' introduction across the US. Auffhammer and Kellogg (2011) identified a critical regulatory design failure: they found that flexible federal standards—which allowed refiners to minimize compliance costs by removing the cheapest, but least ozone-reactive, VOCs—resulted in no statistically significant improvement in air quality. Conversely, the authors found that precisely targeted, inflexible regulations implemented in California, which required the removal of specific, harmful compounds, led to a significant reduction in ground-level ozone concentrations.
+
+The primary goal of this project is to verify the robustness and reproducibility of the causal claims made in Auffhammer and Kellogg (2011). We aim to replicate the authors' key results by employing the same sophisticated econometric methodologies: Difference-in-Differences (DID) estimation and Regression Discontinuity (RD) designs. In adherence to the requirements of a rigorous replication study, we have abstained from using the authors' cleaned data files. Instead, we have sourced, downloaded, and cleaned the original raw data, including daily ambient ozone concentration measurements from the US Environmental Protection Agency (EPA)'s air quality monitoring network and detailed policy implementation timelines, to construct a sample that closely matches the original paper's. Our analysis will systematically re-examine the heterogeneous effects of the flexible federal standards versus the targeted California standards on ozone levels.
+
+ 
+\section{Paper summary and summary statistics table}
+\label{sec:title}
+
+\subsection{Summarize the paper’s research question and its answer}
+
+
+\subsection{Describe the datasets used in answering the question}
+\subsection{Clean the dataset}
+\subsection{Replicate and interpret a summary statistics table that presents distributional charac- teristics (mean, median, IQR, etc) of key variables and covariates used in the empirical analysis.}
+
+
+
+\section{Replicate the main results}
+\label{sec:sections}
+
+
+
+
+
+
+\subsection{ Describe the empirical method in identifying the causal effect (for instance, whether the researchers conduct a randomized experiment or use policy changes to answer their research questions) and state}
+  
+\subsection{Replicate the main result of the paper and interpret it in English}
+
+\subsection{Critically appraise the stated assumptions for causal identification. For instance, if the paper is carrying out an experiment, consider whether the experiment is balanced or if it achieves the stated goal of the author. If the paper is using a policy change or another form of “natural experiments”, consider whether
+there would be confounding factors}
+
+\section{Replicate robustness checks/extensions}
+ 
+
+% Note: If compiling with LaTeX+dvipdf, please ensure images generated from 
+% other software packages have their bounding boxes set correctly.
+   \begin{figure} [ht]
+   \begin{center}
+   \begin{tabular}{c} %% tabular useful for creating an array of images 
+   \includegraphics[height=5cm]{mcr3b.eps}
+   \end{tabular}
+   \end{center}
+   \caption[example] 
+%>>>> use \label inside caption to get Fig. number with \ref{}
+   { \label{fig:example} 
+Figure captions are used to describe the figure and help the reader understand it's significance.  The caption should be centered underneath the figure and set in 9-point font.  It is preferable for figures and tables to be placed at the top or bottom of the page. LaTeX tends to adhere to this standard.}
+   \end{figure} 
+
+
+\section{Re-Analyse}
+\section{MULTIMEDIA FIGURES - VIDEO AND AUDIO FILES}
+
+Video and audio files can be included for publication. See Tab.~\ref{tab:Multimedia-Specifications} for the specifications for the mulitimedia files. Use a screenshot or another .jpg illustration for placement in the text. Use the file name to begin the caption. The text of the caption must end with the text ``http://dx.doi.org/doi.number.goes.here'' which tells the SPIE editor where to insert the hyperlink in the digital version of the manuscript. 
+
+Here is a sample illustration and caption for a multimedia file:
+
+   \begin{figure} [ht]
+   \begin{center}
+   \begin{tabular}{c} 
+   \includegraphics[height=5cm]{MultimediaFigure.jpg}
+	\end{tabular}
+	\end{center}
+   \caption[example] 
+   { \label{fig:video-example} 
+A label of “Video/Audio 1, 2, …” should appear at the beginning of the caption to indicate to which multimedia file it is linked . Include this text at the end of the caption: \url{http://dx.doi.org/doi.number.goes.here}}
+   \end{figure} 
+   
+   \begin{table}[ht]
+\caption{Information on video and audio files that must accompany a manuscript submission.} 
+\label{tab:Multimedia-Specifications}
+\begin{center}       
+\begin{tabular}{|l|l|l|}
+\hline
+\rule[-1ex]{0pt}{3.5ex}  Item & Video & Audio  \\
+\hline
+\rule[-1ex]{0pt}{3.5ex}  File name & Video1, video2... & Audio1, audio2...   \\
+\hline
+\rule[-1ex]{0pt}{3.5ex}  Number of files & 0-10 & 0-10  \\
+\hline
+\rule[-1ex]{0pt}{3.5ex}  Size of each file & 5 MB & 5 MB  \\
+\hline
+\rule[-1ex]{0pt}{3.5ex}  File types accepted & .mpeg, .mov (Quicktime), .wmv (Windows Media Player) & .wav, .mp3  \\
+\hline 
+\end{tabular}
+\end{center}
+\end{table}
+
+\appendix    %>>>> this command starts appendixes
+
+\section{MISCELLANEOUS FORMATTING DETAILS}
+\label{sec:misc}
+
+It is often useful to refer back (or forward) to other sections in the article.  Such references are made by section number.  When a section reference starts a sentence, Section is spelled out; otherwise use its abbreviation, for example, ``In Sec.~2 we showed...'' or ``Section~2.1 contained a description...''.  References to figures, tables, and theorems are handled the same way.
+
+\subsection{Formatting Equations}
+Equations may appear in line with the text, if they are simple, short, and not of major importance; e.g., $\beta = b/r$.  Important equations appear on their own line.  Such equations are centered.  For example, ``The expression for the field of view is
+\begin{equation}
+\label{eq:fov}
+2 a = \frac{(b + 1)}{3c} \, ,
+\end{equation}
+where $a$ is the ...'' Principal equations are numbered, with the equation number placed within parentheses and right justified.  
+
+Equations are considered to be part of a sentence and should be punctuated accordingly. In the above example, a comma follows the equation because the next line is a subordinate clause.  If the equation ends the sentence, a period should follow the equation.  The line following an equation should not be indented unless it is meant to start a new paragraph.  Indentation after an equation is avoided in LaTeX by not leaving a blank line between the equation and the subsequent text.
+
+References to equations include the equation number in parentheses, for example, ``Equation~(\ref{eq:fov}) shows ...'' or ``Combining Eqs.~(2) and (3), we obtain...''  Using a tilde in the LaTeX source file between two characters avoids unwanted line breaks.
+
+\subsection{Formatting Theorems}
+
+To include theorems in a formal way, the theorem identification should appear in a 10-point, bold font, left justified and followed by a period.  The text of the theorem continues on the same line in normal, 10-point font.  For example, 
+
+\noindent\textbf{Theorem 1.} For any unbiased estimator...
+
+Formal statements of lemmas and algorithms receive a similar treatment.
+
+\acknowledgments % equivalent to \section*{ACKNOWLEDGMENTS}       
+ 
+This unnumbered section is used to identify those who have aided the authors in understanding or accomplishing the work presented and to acknowledge sources of funding.  
+
+% References
+\bibliography{report} % bibliography data in report.bib
+\bibliographystyle{spiebib} % makes bibtex use spiebib.bst
+
+\end{document} 
