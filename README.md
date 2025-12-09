@@ -39,15 +39,10 @@ Stat-156-Final-Project/
 
 The replication data is available from:
 
-- **openICPSR**: https://www.openicpsr.org/openicpsr/project/112465
-- **AEA Replication Archive**: Check the American Economic Review website
+
 
 ### Data Description
 
-The study uses:
-- **Daily measurements** of ambient ozone concentrations from hundreds of air quality monitors across the United States
-- **Time period**: 1989-2003
-- **Policy data**: Spatial and temporal variation in gasoline regulations (RVP 9.5, RVP 7.8, Federal RFG, CARB RFG) across different counties and time periods
 
 ## Setup Instructions
 
