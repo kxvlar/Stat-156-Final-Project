@@ -2,17 +2,8 @@
 
 This repository contains code and data for replicating the analysis in:
 
-**"Clearing the Air? The Effects of Gasoline Content Regulation on Air Quality"**  
-by Maximilian Auffhammer and Ryan Kellogg (American Economic Review, 2011)
-
-## Project Overview
-
-This project replicates the analysis examining whether U.S. gasoline content regulations successfully reduced ozone pollution. The paper uses Difference-in-Differences (DiD) and Regression Discontinuity (RD) designs to evaluate the effectiveness of federal and California gasoline regulations.
-
-### Research Questions
-
-- **Question**: Do U.S. gasoline content regulations (specifically restrictions intended to reduce VOC emissions) effectively reduce ground-level ozone pollution?
-- **Answer**: The authors find that flexible federal gasoline standards (like RVP limits) did not significantly improve air quality because refiners removed the least-cost, but least ozone-reactive, VOCs. However, precisely targeted, inflexible California regulations (CARB RFG) significantly improved air quality in the Los Angeles-San Diego area.
+**"Consumption Responses to In-Kind Transfers: Evidence from the Introduction of the Food Stamp Program"**
+by Hilary W. Hoynes and Diane Schanzenbach 
 
 ## Repository Structure
 
@@ -41,15 +32,10 @@ Stat-156-Final-Project/
 
 The replication data is available from:
 
-- **openICPSR**: https://www.openicpsr.org/openicpsr/project/112465
-- **AEA Replication Archive**: Check the American Economic Review website
+
 
 ### Data Description
 
-The study uses:
-- **Daily measurements** of ambient ozone concentrations from hundreds of air quality monitors across the United States
-- **Time period**: 1989-2003
-- **Policy data**: Spatial and temporal variation in gasoline regulations (RVP 9.5, RVP 7.8, Federal RFG, CARB RFG) across different counties and time periods
 
 ## Setup Instructions
 
