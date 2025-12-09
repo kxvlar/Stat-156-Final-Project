@@ -55,14 +55,30 @@ glimpse(county60)
 glimpse(transfers)
 ```
 ```{r}
-#function to load datasets
+library(SAScii)
+
+fam1970 <- read.SAScii(
+  "data/raw/fam1970/FAM1970.txt",
+  "data/raw/fam1970/FAM1970.sas"
+)
+```
+```{r}
+dim(fam1970)                  # how many rows / columns?
+head(names(fam1970), 20)      # first 20 variable names
+fam1970[1, 1:20] 
+```
+```{r}
+library(SAScii)
+library(purrr)
+
 load_psid_year <- function(year) {
   txt_path <- sprintf("data/raw/fam%d/FAM%d.txt", year, year)
   sas_path <- sprintf("data/raw/fam%d/FAM%d.sas", year, year)
   
-  # read.SAScii uses the .sas script to parse the fixed-width .txt file
+  message("Loading PSID year: ", year)
+  
   df <- read.SAScii(
-    fn      = txt_path,
+    fn = txt_path,
     sas_ri = sas_path
   )
   
@@ -74,11 +90,85 @@ load_psid_year <- function(year) {
 psid_years <- 1968:1978
 
 psid_all <- map_dfr(psid_years, load_psid_year)
+```
+```{r}
+dim(psid_all)
+table(psid_all$year)
+head(names(psid_all))
+```
+
+
+```{r}
+dim(psid_all)
+table(psid_all$year)
+head(names(psid_all))
+```
+```{r}
+"V1101" %in% names(psid_all)
+
+# Peek at a slice of names around where 1970 variables live
+names(psid_all)[1:50]
+names(psid_all)[550:650]
+tail(names(psid_all), 50)
+```
+```{r}
+saveRDS(psid_all, "data/processed/psid_1968_1978_raw.rds")
 
 ```
 ```{r}
-# quick sanity checks
-dplyr::glimpse(psid_all)
-table(psid_all$year)
+psid_raw <- readRDS("data/processed/psid_1968_1978_raw.rds")
 
+```
+
+```{r}
+dim(psid_all)
+dim(psid_raw)
+
+identical(psid_all, psid_raw)
+```
+
+```{r}
+# Dimensions
+dim(psid_raw)
+
+# Years covered and counts per year
+table(psid_raw$year)
+
+# First few variable names
+head(names(psid_raw), 50)
+
+# Last few variable names
+tail(names(psid_raw), 50)
+
+```
+
+```{r}
+"V93" %in% names(psid_raw)
+"V94" %in% names(psid_raw)
+table(psid_raw$year, !is.na(psid_raw$V93))
+table(psid_raw$year, !is.na(psid_raw$V94))
+
+```
+```{r}
+psid_with_state <- psid_raw %>%
+    mutate(state_psid = case_when(
+        year == 1968 ~ V93,
+        year == 1969 ~ V537,
+        year == 1970 ~ V1103,
+        year == 1971 ~ V1803,
+        year == 1972 ~ V2403,
+        year == 1973 ~ V3003,
+        year == 1974 ~ V3403,
+        year == 1975 ~ V3803,
+        year == 1976 ~ V4303,
+        year == 1977 ~ V5203,
+        year == 1978 ~ V5703,
+        TRUE ~ NA_real_
+    ))
+
+```
+
+
+```{r}
+table(psid_with_state$state_psid, useNA="ifany")
 ```
