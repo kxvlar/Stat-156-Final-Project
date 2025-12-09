@@ -1,18 +1,16 @@
-# Stat-156-Final-Project: Replication of "Clearing the Air?"
+# STAT 156 Final Project: Consumption Responses to In-Kind Transfers
 
-This repository contains code and data for replicating the analysis in:
+This repository contains the code and documentation for the STAT 156 final project, which involves a replication and critical re-analysis of the paper:
 
-**"Clearing the Air? The Effects of Gasoline Content Regulation on Air Quality"**  
-by Maximilian Auffhammer and Ryan Kellogg (American Economic Review, 2011)
+"Consumption Responses to In-Kind Transfers: Evidence from the Introduction of the Food Stamp Program" (Hoynes and Schanzenbach).
 
-## Project Overview
-
-This project replicates the analysis examining whether U.S. gasoline content regulations successfully reduced ozone pollution. The paper uses Difference-in-Differences (DiD) and Regression Discontinuity (RD) designs to evaluate the effectiveness of federal and California gasoline regulations.
+The project's primary goal is to apply causal inference methods to estimate the effect of the staggered introduction of the Food Stamp Program (FSP) on household food consumption.
 
 ### Research Questions
 
-- **Question**: Do U.S. gasoline content regulations (specifically restrictions intended to reduce VOC emissions) effectively reduce ground-level ozone pollution?
-- **Answer**: The authors find that flexible federal gasoline standards (like RVP limits) did not significantly improve air quality because refiners removed the least-cost, but least ozone-reactive, VOCs. However, precisely targeted, inflexible California regulations (CARB RFG) significantly improved air quality in the Los Angeles-San Diego area.
+- **Question**: What is the causal effect of receiving a cash-equivalent in-kind transfer (the introduction of the Food Stamp Program) on household food consumption and expenditure?
+- 
+- **Answer**: The authors find that in-kind transfers lead to higher food expenditure than equivalent cash transfers, suggesting that food stamps are not treated as perfect substitutes for cash. Specifically, they estimate that the Marginal Propensity to Consume (MPC) food out of food stamp benefits is significantly higher than the MPC food out of regular cash income. This result deviates from standard economic theory and supports the idea that the "in-kind" nature of the transfer changes consumption behavior.
 
 ## Repository Structure
 
