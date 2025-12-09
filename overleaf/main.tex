@@ -41,23 +41,53 @@ multiple methods, please attend the GSI’s office hour
 % Include a list of keywords after the abstract 
 \keywords{}
 
+\newpage
+
 \section{INTRODUCTION}
 \label{sec:intro}  % \label{} allows reference to this section
 
-This paper is a replication and critical re-analysis of the seminal work, "Clearing the Air? The Effects of Gasoline Content Regulation on Air Quality" by Maximilian Auffhammer and Ryan Kellogg (2011). The original study provided the first comprehensive empirical estimates of the regulations' benefits, exploiting the spatial and temporal variation in the standards' introduction across the US. Auffhammer and Kellogg (2011) identified a critical regulatory design failure: they found that flexible federal standards—which allowed refiners to minimize compliance costs by removing the cheapest, but least ozone-reactive, VOCs—resulted in no statistically significant improvement in air quality. Conversely, the authors found that precisely targeted, inflexible regulations implemented in California, which required the removal of specific, harmful compounds, led to a significant reduction in ground-level ozone concentrations.
+This paper is a replication and critical re-analysis of the seminal work, "Consumption Responses to In-Kind Transfers: Evidence from the Introduction of the Food Stamp Program" by Hilary W. Hoynes and Diane Schanzenbach.
 
-The primary goal of this project is to verify the robustness and reproducibility of the causal claims made in Auffhammer and Kellogg (2011). We aim to replicate the authors' key results by employing the same sophisticated econometric methodologies: Difference-in-Differences (DID) estimation and Regression Discontinuity (RD) designs. In adherence to the requirements of a rigorous replication study, we have abstained from using the authors' cleaned data files. Instead, we have sourced, downloaded, and cleaned the original raw data, including daily ambient ozone concentration measurements from the US Environmental Protection Agency (EPA)'s air quality monitoring network and detailed policy implementation timelines, to construct a sample that closely matches the original paper's. Our analysis will systematically re-examine the heterogeneous effects of the flexible federal standards versus the targeted California standards on ozone levels.
+This paper presents a replication-style reassessment of the landmark study “Consumption Responses to In-Kind Transfers: Evidence from the Introduction of the Food Stamp Program” by Hilary Hoynes and Diane Schanzenbach (2007). The original work exploited the staggered rollout of the Food Stamp Program (FSP) across U.S. counties from 1961–1975 to generate the first large-scale causal estimates of how a major in-kind transfer affects household consumption and labor supply. By leveraging this quasi-experimental variation, Hoynes and Schanzenbach documented that access to food stamps led to a substantial rise in total food expenditures, a decline in out-of-pocket grocery spending, and modest reductions in meals consumed away from home—patterns consistent with canonical economic predictions for in-kind benefits. Their analysis also revealed small but measurable labor-supply responses, aligning with theoretical expectations of income and substitution effects in means-tested programs. 
 
+The primary goal of this project is to evaluate the reproducibility and robustness of these core empirical claims. Following the standards of rigorous replication research, we reconstruct the authors’ analysis using independently sourced raw data—county-level Food Stamp adoption dates, detailed transfer-program expenditure measures, and microdata from the Panel Study of Income Dynamics (PSID)—rather than relying on prepared datasets from the original study. We then re-estimate their key Difference-in-Differences (DiD) specifications, alongside supplemental subgroup analyses, to assess the stability of their conclusions regarding the causal effects of in-kind transfers on consumption behavior and labor market outcomes. 
+
+In the sections that follow, we first provide a concise summary of Hoynes and Schanzenbach’s research question, empirical setting, and core findings, and we reconstruct the datasets used in their analysis before presenting replicated summary statistics. We then turn to replicating the paper’s main empirical results, detailing the identification strategy—centered on county-level variation in Food Stamp Program introduction—and interpreting our reproduced estimates in plain language. Next, we critically evaluate the assumptions underlying the original causal design and assess whether they appear to hold in our reconstructed sample. Finally, we replicate the authors’ robustness checks, including alternative specifications, placebo tests, and subgroup analyses, and discuss the extent to which our findings align with or diverge from the original study’s conclusions.
  
 \section{Paper summary and summary statistics table}
 \label{sec:title}
+
 
 \subsection{Summarize the paper’s research question and its answer}
 
 
 \subsection{Describe the datasets used in answering the question}
+The data in this paper is from the Panel Study of Income Dynamics (PSID) collected by Institute for Social Research (ISR) at the University of Michigan. Hoynes and Schanzenback focus on the data collection from 1968-1978. The original 1968 sample is split into a nationally representative subsample of 3000 households (Survey Research Center subsample) and 1900 households from an existing sample of low income and minoirty populations (Survey of Economic Opportunity subsample). They adjusted for the nonrandom composition, by using "weights designed to eliminate biases attributable to the oversampling of low income groups and to attrition".
+
+The original 1968 sample consists of two subsamples:
+a nationally representative subsample of 3,000 households (Survey Research Center subsample) and
+a subsample of 1,900 households selected from an existing sample of low income and minority
+populations (Survey of Economic Opportunity subsample). To adjust for this nonrandom
+composition, the PSID includes weights designed to eliminate biases attributable to the oversampling of low income groups and to attrition. All results use the weights provided by the PSID.
+
+
+
+
+
 \subsection{Clean the dataset}
-\subsection{Replicate and interpret a summary statistics table that presents distributional charac- teristics (mean, median, IQR, etc) of key variables and covariates used in the empirical analysis.}
+
+\subsubsection{Issues with the data}
+The 1968-1978 time frame is used due to the analysis occurring before the purchase requirement was ended. The end of the purchase requirement would make significant effect to any sort of conclusion to make, thus this was an excellent decision. 
+
+For the food consumption analysis 1968 and 1973 are dropped, but they are used for labour supply analysis. In 1968, this is because of inconsistencies in the definition of food variables in that year. This is a valid reason to leave it out. In 1973, food consumption variables were not included in that years' survey.  
+
+In the entire dataset, observations where "the ratio of food
+spending to income exceeds 0.85, where total annual food expenditures were less than \textdollar100 (in 2005
+dollars) or where annual family income was less than \textdollar500 (in 2005 dollars)" were dropped
+
+\subsubsection{Our methodology}
+
+\subsection{Replicate and interpret a summary statistics table that presents distributional characteristics (mean, median, IQR, etc) of key variables and covariates used in the empirical analysis.}
 
 
 
@@ -81,17 +111,17 @@ there would be confounding factors}
 
 % Note: If compiling with LaTeX+dvipdf, please ensure images generated from 
 % other software packages have their bounding boxes set correctly.
-   \begin{figure} [ht]
-   \begin{center}
-   \begin{tabular}{c} %% tabular useful for creating an array of images 
-   \includegraphics[height=5cm]{mcr3b.eps}
-   \end{tabular}
-   \end{center}
-   \caption[example] 
+   %\begin{figure} [ht]
+   %\begin{center}
+   %begin{tabular}{c} %% tabular useful for creating an array of images 
+   %\includegraphics[height=5cm]{mcr3b.eps}
+   %\end{tabular}
+   %\end{center}
+   %\caption[example] 
 %>>>> use \label inside caption to get Fig. number with \ref{}
-   { \label{fig:example} 
-Figure captions are used to describe the figure and help the reader understand it's significance.  The caption should be centered underneath the figure and set in 9-point font.  It is preferable for figures and tables to be placed at the top or bottom of the page. LaTeX tends to adhere to this standard.}
-   \end{figure} 
+   %{ \label{fig:example} 
+%Figure captions are used to describe the figure and help the reader understand it's significance.  The caption should be centered underneath the figure and set in 9-point font.  It is preferable for figures and tables to be placed at the top or bottom of the page. LaTeX tends to adhere to this standard.}
+   %\end{figure} 
 
 
 \section{Re-Analyse}
