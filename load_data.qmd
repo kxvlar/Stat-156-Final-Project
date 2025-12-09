@@ -1,5 +1,84 @@
 ---
-title: "Untitled"
+title: "Data Loading Script"
 format: html
 ---
 
+## I have written in quarto format because it makes my workflow cleaner. We can change into .R format quite easily later (not necessary). - Keval 
+
+## PROBLEM: Spacing error when loading file. If you can figure it out lmk. 
+```{r}
+#load libraries
+
+library(haven)     # For .dta files
+library(readr)     # For fixed-width PSID .txt files
+library(dplyr)     # For data manipulation
+library(purrr)     # For mapping over years
+
+```
+
+```{r}
+library(SAScii)
+# Define the paths for 1970
+test_txt_path <- "data/raw/fam1970/FAM1970.txt"
+test_sas_path <- "data/raw/fam1970/FAM1970.sas"
+
+# Load the data
+psid_1970_test <- read.SAScii(
+    fn      = test_txt_path,
+    sas_ri = test_sas_path
+)
+
+# Check the number of columns and rows
+dim(psid_1970_test)
+```
+```{r}
+readLines("data/raw/fam1970/FAM1970.txt", n = 5)
+
+nchar(readLines("data/raw/fam1970/FAM1970.txt", n = 1))
+
+cat(readLines("data/raw/fam1970/FAM1970.txt", n = 1), "\n")
+
+```
+```{r}
+# Food Stamp rollout (treatment)
+fs_rollout <- read_dta("data/processed/fsdatabyfips.dta")
+
+# 1960 county characteristics
+county60 <- read_dta("data/processed/fscbdata_short.dta")
+
+# BEA transfers (used for robustness)
+transfers <- read_dta("data/processed/reistran.dta")
+
+#sanity check
+glimpse(fs_rollout)
+glimpse(county60)
+glimpse(transfers)
+```
+```{r}
+#function to load datasets
+load_psid_year <- function(year) {
+  txt_path <- sprintf("data/raw/fam%d/FAM%d.txt", year, year)
+  sas_path <- sprintf("data/raw/fam%d/FAM%d.sas", year, year)
+  
+  # read.SAScii uses the .sas script to parse the fixed-width .txt file
+  df <- read.SAScii(
+    fn      = txt_path,
+    sas_ri = sas_path
+  )
+  
+  df$year <- year
+  df
+}
+```
+```{r}
+psid_years <- 1968:1978
+
+psid_all <- map_dfr(psid_years, load_psid_year)
+
+```
+```{r}
+# quick sanity checks
+dplyr::glimpse(psid_all)
+table(psid_all$year)
+
+```
