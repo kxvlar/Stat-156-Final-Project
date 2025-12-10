@@ -9,7 +9,7 @@ The project's primary goal is to apply causal inference methods to estimate the 
 ### Research Questions
 
 - **Question**: What is the causal effect of receiving a cash-equivalent in-kind transfer (the introduction of the Food Stamp Program) on household food consumption and expenditure?
-- 
+
 - **Answer**: The authors find that in-kind transfers lead to higher food expenditure than equivalent cash transfers, suggesting that food stamps are not treated as perfect substitutes for cash. Specifically, they estimate that the Marginal Propensity to Consume (MPC) food out of food stamp benefits is significantly higher than the MPC food out of regular cash income. This result deviates from standard economic theory and supports the idea that the "in-kind" nature of the transfer changes consumption behavior.
 
 ## Repository Structure
